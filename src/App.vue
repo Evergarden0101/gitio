@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <router-view/> -->
 
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" style="margin-bottom:50px">
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" style="margin-bottom:10px">
       <el-menu-item index="1" style="font-size:16px;width: 140px;">My Bio</el-menu-item>
       <el-menu-item index="2" style="font-size:16px;width: 140px;">Only For 🌼盈🤫</el-menu-item>
       <!-- <el-submenu index="2">
@@ -23,8 +23,15 @@
 
     <el-row v-if="activeIndex==1">
       <h1>I CAN DO ALL THINGS!</h1>
+      <el-row style="margin-top:40px">
+        <el-col :offset="4" :span="16">
+          <el-image
+          :src="require('@/assets/IMG_4672.jpg')"
+          :fit="contain"></el-image>
+        </el-col>
+      </el-row>
     </el-row>
-    <el-row v-if="activeIndex==2">
+    <el-row v-if="activeIndex==2" style="margin-top:40px">
       <el-col :offset="4" :span="16">
         <template>
           <el-carousel trigger="click" :interval="4000" type="card" height="250px" width="800px">
