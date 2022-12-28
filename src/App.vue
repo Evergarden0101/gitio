@@ -1,26 +1,27 @@
 <template>
   <div id="app">
+    <a-back-top/>
     <!-- <router-view/> -->
-
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" style="margin-bottom:10px">
-      <el-menu-item index="1" style="font-size:16px;width: 140px;">My Bio</el-menu-item>
-      <el-menu-item index="2" style="font-size:16px;width: 140px;">Only For 🌼盈🤫</el-menu-item>
-      <!-- <el-submenu index="2">
-        <template slot="title">我的工作台</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项1</el-menu-item>
-          <el-menu-item index="2-4-2">选项2</el-menu-item>
-          <el-menu-item index="2-4-3">选项3</el-menu-item>
-        </el-submenu>
-      </el-submenu> -->
-      <!-- <el-menu-item index="3" disabled>消息中心</el-menu-item>
-      <el-menu-item index="4"><a href=" " target="_blank">订单管理</a></el-menu-item> -->
-    </el-menu>
-
+    <a-affix :offset-top="top">
+      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" style="margin-bottom:10px">
+        <el-menu-item index="1" style="font-size:16px;width: 140px;">My Bio</el-menu-item>
+        <el-menu-item index="2" style="font-size:16px;width: 140px;">Only For 🌼盈🤫</el-menu-item>
+        <!-- <el-submenu index="2">
+          <template slot="title">我的工作台</template>
+          <el-menu-item index="2-1">选项1</el-menu-item>
+          <el-menu-item index="2-2">选项2</el-menu-item>
+          <el-menu-item index="2-3">选项3</el-menu-item>
+          <el-submenu index="2-4">
+            <template slot="title">选项4</template>
+            <el-menu-item index="2-4-1">选项1</el-menu-item>
+            <el-menu-item index="2-4-2">选项2</el-menu-item>
+            <el-menu-item index="2-4-3">选项3</el-menu-item>
+          </el-submenu>
+        </el-submenu> -->
+        <!-- <el-menu-item index="3" disabled>消息中心</el-menu-item>
+        <el-menu-item index="4"><a href=" " target="_blank">订单管理</a></el-menu-item> -->
+      </el-menu>
+    </a-affix>
     <el-row v-if="activeIndex==1">
       <h1>I CAN DO ALL THINGS!</h1>
       <el-row style="margin-top:40px">
@@ -65,7 +66,7 @@
     </template>
 
 
-    <el-row style="margin-top:30px">
+    <el-row style="margin-top:30px" v-if="activeIndex==2">
       <el-col :span="1" :offset="1">
         <a-icon type="heart" theme="twoTone" two-tone-color="#eb2f96" style="font-size:40px"/>
       </el-col>
@@ -134,7 +135,7 @@
       </el-col>
     </el-row>
 
-    <el-row style="margin-top:10px">
+    <el-row style="margin-top:10px" v-if="activeIndex==2">
         <el-col :span="18" :offset="3" >
           <el-divider><h2>
             <a-icon type="heart" theme="filled" style="font-size:22px;color:pink"/>
@@ -142,7 +143,7 @@
             <a-icon type="heart" theme="filled" style="font-size:22px;color:pink"/>
             <a-icon type="heart" theme="filled" style="font-size:22px;color:pink"/>
             <a-icon type="heart" theme="filled" style="font-size:22px;color:pink"/>
-            🤫1周年快乐😶
+            🤫1周年快乐SPECIAL😶
             <a-icon type="heart" theme="filled" style="font-size:22px;color:pink"/>
             <a-icon type="heart" theme="filled" style="font-size:22px;color:pink"/>
             <a-icon type="heart" theme="filled" style="font-size:22px;color:pink"/>
@@ -151,6 +152,20 @@
           </h2></el-divider>
         </el-col>
       </el-row>
+
+    <el-row style="margin-top:40px" v-if="activeIndex==2">
+      <el-col :offset="3" :span="8">
+        <el-image
+        :src="require('../static/22.jpg')"
+        :fit='imgFit'></el-image>
+      </el-col>
+
+      <el-col :offset="2" :span="8">
+        <el-image
+        src='../static/DSC01214.JPG'
+        :fit='imgFit'></el-image>
+      </el-col>
+    </el-row>
 
     <el-row v-if="activeIndex==2">
       <el-row style="margin-top:40px">
@@ -175,18 +190,18 @@
         </el-col>
       </el-row>
 
-      <el-row style="margin-top:30px">
+      <el-row style="margin-top:30px" v-if="activeIndex==2">
         <el-col :span="18" :offset="3" >
-          <el-divider><i class="el-icon-service" style="font-size:30px"></i></el-divider>
+          <el-divider><i class="el-icon-service" style="font-size:30px"></i><span style="font-size:20px"> 看完记得回来打分哟</span></el-divider>
         </el-col>
       </el-row>
 
       <el-row style="margin-top:30px">
         <el-col :span="16" :offset="4">
           <template>
-            <el-carousel trigger="click" :interval="4000" type="card" height="250px" width="800px">
-              <el-carousel-item v-for="item in 6" :key="item">
-                <h3 class="medium">{{ item }}</h3>
+            <el-carousel trigger="click" :interval="3000" type="card" :height="bannerHeight+'px'">
+              <el-carousel-item v-for="item in imgList" :key="item.id">
+                <img ref="bannerHeight" :src="item.url" @load="imgLoad" style="width: 100%;">
               </el-carousel-item>
             </el-carousel>
           </template>
@@ -418,7 +433,21 @@
       </el-row>
     </el-row>
 
-    <el-row>
+    <el-row style="margin-top:30px" v-if="activeIndex==2">
+      <el-col :span="18" :offset="3" >
+        <el-divider><a-icon type="edit" style="font-size:24px"/><span style="font-size:20px">&nbsp笔给你一起写～</span></el-divider>
+      </el-col>
+    </el-row>
+
+    <el-row style="margin-top:40px" v-if="activeIndex==2">
+        <el-col :offset="8" :span="8">
+          <el-image
+          :src="require('../static/IMG_9530.jpg')"
+          :fit='imgFit'></el-image>
+        </el-col>
+      </el-row>
+
+    <el-row style="margin-top:30px" v-if="activeIndex==2">
       <el-col :span="1" :offset="1">
         <a-icon type="heart" theme="twoTone" two-tone-color="#eb2f96" style="font-size:50px"/>
       </el-col>
@@ -504,9 +533,21 @@ export default {
       labelPosition: 'left',
       imgFit:'contain',
       rate: null,
+      top:0,
+
+      // 浏览器宽度
+      screenWidth :0,
+      bannerHeight:"",
+
       iconClasses: ['icon-rate-face-1', 'icon-rate-face-2', 'icon-rate-face-3'],
       colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
       texts: ['辣鸡！💩', '不太行🫤', '一般般🤔', '不错捏🥳', '亲亲亲😘'],
+      imgList:[{id:0, url:'../static/DSC00963.JPG'},{id:1, url:'../static/IMG_2849.JPG'},{id:2, url:'../static/IMG_8747.JPG'},{id:3, url:'../static/DSC05280.JPG'},
+        {id:4, url:'../static/IMG_9735.JPG'},{id:5, url:'../static/IMG_2267.JPG'},{id:6, url:'../static/IMG_2521.JPG'},{id:7, url:'../static/DSC09404.JPG'},
+        {id:8, url:'../static/IMG_2989.JPG'},{id:9, url:'../static/IMG_3399.JPG'},{id:10, url:'../static/IMG_3543.JPG'},{id:11, url:'../static/IMG_3642.JPG'},
+        {id:12, url:'../static/IMG_4256.JPG'},{id:13, url:'../static/IMG_4404.JPG'},{id:14, url:'../static/IMG_4453.JPG'},{id:15, url:'../static/IMG_4572.JPG'},
+        {id:16, url:'../static/IMG_7335.JPG'},{id:17, url:'../static/IMG_7661.JPG'},
+      ],
       srcList:['./static/2422.png', './static/2428.png', './static/2423.png','./static/2424.png','./static/2426.png','./static/2427.png',],
       form:{
         name: '',
@@ -517,6 +558,17 @@ export default {
     }
   },
   methods: {
+    imgLoad(){
+      this.$nextTick(()=>{
+        this.bannerHeight=this.$refs.bannerHeight[0].height;
+          console.log(this.$refs.bannerHeight[0].height);
+      })
+    },
+    setSize() {
+      // 通过浏览器宽度(图片宽度)计算高度
+      this.bannerHeight = 500 / 1920 * this.screenWidth;
+      document.getElementById('el-carousel').style.height = this.bannerHeight + 'px';
+    },
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
       if (key == '2') {
@@ -543,7 +595,23 @@ export default {
         })
       }
     }
-  }
+  },
+  mounted() {
+      // 首次加载时,需要调用一次
+      // this.screenWidth =  window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      // this.setSize();
+      //监听浏览器窗口大小改变
+      // window.addEventListener('resize', function() {
+      //   this.screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      //   this.setSize();
+      // }, false);
+
+      this.imgLoad();
+      window.addEventListener('resize',() => {
+          this.bannerHeight=this.$refs.bannerHeight[0].height;
+          this.imgLoad();
+      },false)
+  },
 }
 </script>
 
@@ -570,4 +638,5 @@ export default {
 .el-carousel__item:nth-child(2n+1) {
   background-color: #d3dce6;
 }
+
 </style>
