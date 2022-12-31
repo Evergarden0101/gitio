@@ -170,13 +170,14 @@
     <el-row v-if="activeIndex==2">
       <el-row style="margin-top:40px">
         <el-col :span="7" :offset="4">
-          <aplayer autoplay style="border-radius:16px;border:1.2px solid;box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);scale: 120%;" 
+          <aplayer autoplay float :volume="0.1" style="border-radius:16px;border:1.2px solid;box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);scale: 120%;" 
             :music="{
               title: 'Gotta Have You',
               artist: 'The Weepies',
               src: './static/Gotta Have You.mp3',
               pic: '',
-              lrc: ''
+              lrc: '',
+              theme: 'pink'
             }">
           </aplayer>
         </el-col>
@@ -205,6 +206,17 @@
               </el-carousel-item>
             </el-carousel>
           </template>
+        </el-col>
+      </el-row>
+
+      <el-row style="margin-top:40px">
+        <el-col :span="7" :offset="4">
+          <iframe src="/static/circular.html" frameborder="" ref="circular" @load=""
+          onload="this.height=540" width="520px" height="520px"></iframe>
+        </el-col>
+        <el-col :span="9" :offset="2">
+          <iframe src="/static/map.html" frameborder="" ref="circular" @load=""
+          onload="this.height=540" width="520px" height="520px"></iframe>
         </el-col>
       </el-row>
 
@@ -520,11 +532,12 @@
 </template>
 
 <script>
-import aplayer from 'vue-aplayer'
+import Aplayer from 'vue-aplayer'
+import { Message } from "element-ui";
 export default {
   name: 'App',
   components: {
-    aplayer
+    Aplayer
   },
   data () {
     return {
@@ -561,14 +574,15 @@ export default {
     imgLoad(){
       this.$nextTick(()=>{
         this.bannerHeight=this.$refs.bannerHeight[0].height;
-          console.log(this.$refs.bannerHeight[0].height);
+        // console.log(this.$refs.bannerHeight[0].height);
       })
     },
-    setSize() {
-      // 通过浏览器宽度(图片宽度)计算高度
-      this.bannerHeight = 500 / 1920 * this.screenWidth;
-      document.getElementById('el-carousel').style.height = this.bannerHeight + 'px';
-    },
+    // setSize() {
+    //   // 通过浏览器宽度(图片宽度)计算高度
+    //   this.bannerHeight = 500 / 1920 * this.screenWidth;
+    //   document.getElementById('el-carousel').style.height = this.bannerHeight + 'px';
+    // },
+    
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
       if (key == '2') {
@@ -582,13 +596,13 @@ export default {
       if(this.form.name == '江2' && this.form.first == '2021-10-17' && this.form.date == '2022-01-03') {
         this.dialogFormVisible = false;
         this.activeIndex = '2';
-        this.$message({
+        Message({
           showClose: true,
           message: '认证成功！欢迎小宝宝！',
           type: 'success'
         });
       }else {
-        this.$message({
+        Message({
           showClose: true,
           message: '写错啦！再想想看👀',
           type: 'error'
