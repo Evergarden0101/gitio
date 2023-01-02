@@ -220,7 +220,7 @@
         </el-col>
       </el-row>
 
-      <el-row style="margin-top:50px">
+      <el-row style="margin-top:30px">
         <el-col :span="12" :offset="6">
           <el-timeline>
             <el-timeline-item timestamp="1999/01/01" placement="top" color='black' size="large">
@@ -451,6 +451,60 @@
       </el-col>
     </el-row>
 
+
+    <el-row style="margin-top:30px" v-if="activeIndex==2">
+      <el-col :span="12" :offset="6">
+        <el-input clearable placeholder="请输入内容" v-model="input1" style="margin-bottom:20px">
+          <template slot="prepend">亲爱的</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input2" style="margin-bottom:20px">
+          <template slot="prepend">我不喜欢</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input3" style="margin-bottom:20px">
+          <template slot="prepend">我很恼火</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input4" style="margin-bottom:20px">
+          <template slot="prepend">我感觉很沮丧</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input5" style="margin-bottom:20px">
+          <template slot="prepend">我很生气</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input6" style="margin-bottom:20px">
+          <template slot="prepend">我感到很失望</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input7" style="margin-bottom:20px">
+          <template slot="prepend">我不想要</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input8" style="margin-bottom:20px">
+          <template slot="prepend">我需要</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input9" style="margin-bottom:20px">
+          <template slot="prepend">我希望</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input10" style="margin-bottom:20px">
+          <template slot="prepend">我很抱歉</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input11" style="margin-bottom:20px">
+          <template slot="prepend">我爱</template>
+          <template slot="append">，</template>
+        </el-input>
+        <el-input clearable placeholder="请输入内容" v-model="input12" style="margin-bottom:20px">
+          <template slot="prepend">我期望</template>
+          <template slot="append">。</template>
+        </el-input>
+      </el-col>
+    </el-row>
+
     <el-row style="margin-top:40px" v-if="activeIndex==2">
         <el-col :offset="8" :span="8">
           <el-image
@@ -541,12 +595,18 @@ export default {
   },
   data () {
     return {
-      activeIndex: '2',
+      activeIndex: '1',
       dialogFormVisible: false,
       labelPosition: 'left',
       imgFit:'contain',
       rate: null,
       top:0,
+      input1: '',
+      input2: '',
+      input3: '',
+      input4: '',
+      input5: '',
+      input6: '',
 
       // 浏览器宽度
       screenWidth :0,
@@ -652,5 +712,10 @@ export default {
 .el-carousel__item:nth-child(2n+1) {
   background-color: #d3dce6;
 }
-
+.el-select .el-input {
+  width: 130px;
+}
+.input-with-select .el-input-group__prepend {
+  background-color: #fff;
+}
 </style>
