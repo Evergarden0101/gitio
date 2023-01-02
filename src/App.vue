@@ -180,6 +180,7 @@
               theme: 'pink'
             }">
           </aplayer>
+          <!-- TODO: 增加歌单 -->
         </el-col>
         <el-col :span="6" :offset="1" style="font-size:60px;scale: 120%;">
           <el-rate
@@ -215,6 +216,7 @@
           onload="this.height=540" width="520px" height="520px"></iframe>
         </el-col>
         <el-col :span="9" :offset="2">
+          <!-- TODO: hover city -->
           <iframe src="/static/map.html" frameborder="" ref="circular" @load=""
           onload="this.height=540" width="520px" height="520px"></iframe>
         </el-col>
@@ -235,15 +237,16 @@
                 <p>😶世界に一つだけの花 悄悄开放 2000/02/02 ??:??</p>
               </el-card>
             </el-timeline-item>
+            <!-- TODO: 21years 可能遇见的地方 -->
             <el-timeline-item timestamp="2021/10/17" placement="top" color='#0bbd87' size="large">
               <el-card style="border-radius:20px; border:2px solid;">
                 <h4>认识邱诗盈</h4>
-                <p>一起玩 《火化吧》 2021/10/17 14:00</p>
+                <p>一起玩 《火化吧，赶紧的》 2021/10/17 14:00</p>
               </el-card>
             </el-timeline-item>
             <el-timeline-item timestamp="2021/12/15" placement="top" color='#0bbd87'>
               <el-card style="border-radius:20px; border:2px solid;">
-                <h4>单独吃饭（date）</h4>
+                <h4>单独吃饭（date）还饭</h4>
                 <p>一起吃饭喝酒 一起回家 2021/12/15 18:10</p>
               </el-card>
             </el-timeline-item>
@@ -355,6 +358,7 @@
                 <p>一起去迪士尼啦 拍了好多照片 2022/02/21 07:30</p>
               </el-card>
             </el-timeline-item>
+            <!-- TODO: 补充2-6 -->
             <el-timeline-item timestamp="2022/07/01" placement="top" color='pink'>
               <el-card style="border-radius:20px; border:2px solid;">
                 <h4>奉贤旅游</h4>
@@ -607,6 +611,12 @@ export default {
       input4: '',
       input5: '',
       input6: '',
+      input7: '',
+      input8: '',
+      input9: '',
+      input10: '',
+      input11: '',
+      input12: '',
 
       // 浏览器宽度
       screenWidth :0,
