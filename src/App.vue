@@ -438,6 +438,12 @@
                 <p>怎么才第一年！还会有很多很多年！✍️甜甜契约 有效期至 2222/13/14 05:21</p>
               </el-card>
             </el-timeline-item>
+            <el-timeline-item timestamp="2023/03/08" placement="top" color='pink'>
+              <el-card style="border-radius:20px; border:2px solid;">
+                <h4>小花花尝试写代码中...</h4>
+                <p>希望一次成功！让我来看看👀emmmm咋保存🤔 2023/03/08 10:45</p>
+              </el-card>
+            </el-timeline-item>
             <el-timeline-item timestamp="♾️" placement="top" color='orange'>
               <el-card style="border-radius:20px; border:2px solid;">
                 <h4>To be continued...</h4>
